@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Mouse from './Mouse';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Sirup from './Sirup';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/mouse" element={<Mouse />} />
+        <Route path="/sirup" element={<Sirup />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
