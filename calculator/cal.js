@@ -5,8 +5,9 @@ let resultBtn = document.getElementsByClassName('resultBtn')[0]; //결과내기(
 
 //계산기 입력 처리함수
 function calc(value) {
+  //입력을 시작할 때 기존에 써있던 0을 지우고 입력함
   if (cal['result'].value == 0) {
-    cal['result'] = '';
+    cal['result'].value = '';
   }
 
   cal['result'].value += value;
@@ -17,9 +18,28 @@ function clr() {
   cal['result'].value = 0;
 }
 
+//계산 처리 함수
+function calcResult() {
+  let result = document.forms['cal']['result'];
+  let calc = eval(result.value);
+
+  cal['result'].value = calc;
+}
+
 //AC 버튼 클릭 시 초기화
 clearBtn.onclick = () => {
   clr();
+}
+
+//= 버튼 클릭 시 계산 결과 도출
+resultBtn.onclick = () => {
+  try {
+    calcResult();
+  } catch (error) {
+    let result = cal['result'];
+    result.value = 'ERROR'; //계산 결과가 이상할 경우 에러처리
+  }
+
 }
 
 //input값 확인
